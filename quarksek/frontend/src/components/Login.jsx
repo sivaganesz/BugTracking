@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import loginimg from '../../../frontend/src/assets/login.png';
 import loginimg1 from '../../../frontend/src/assets/login1.png';
 import { BsFillBugFill } from "react-icons/bs";
 
-const Login = () => {
+const LoginPage = () => {
   const [role, setRole] = useState("");
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if(userId && password){
+    if (userId && password) {
       if (role === "customer") {
         // Redirect to customer page
         navigate("/customer");
@@ -27,15 +27,19 @@ const Login = () => {
       }
     } else {
       setError("Invalid Input Value");
-    }
-  };
+      setTimeout(() => {
+        setError("");
+      }, 1000);
 
+    };
+
+  };
   return (
     <>
-     
-      <div className="min-h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center relative" style={{backgroundImage: `url(${loginimg})`}}>
-      <h3 className="absolute top-0 left-20 text-4xl font-bold mr-8 text-white mt-8 flex">BUG TRACKING<BsFillBugFill className="ml-2 bg-red-500 p-1 rounded-2xl size-12"/>
-</h3>
+
+      <div className="min-h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center relative" style={{ backgroundImage: `url(${loginimg})` }}>
+        <h3 className="absolute top-0 left-20 text-4xl font-bold mr-8 text-white mt-8 flex">BUG TRACKING<BsFillBugFill className="ml-2 bg-red-500 p-1 rounded-2xl size-12" />
+        </h3>
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-80 mb-4 relative">
           <img src={loginimg1} alt="Additional Image" className="absolute left-0 bottom-0 ml-80 mt-8 w-80 h-96 object-cover" />
           <h2 className="text-2xl font-bold mb-4 text-center">LOGIN</h2>
@@ -86,7 +90,7 @@ const Login = () => {
               <option value="tester">Tester</option>
             </select>
           </div>
-          <div className="flex ml-20 mt-7">
+          <div className="flex ml-20 mt-5">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
@@ -94,11 +98,14 @@ const Login = () => {
             >
               Sign In
             </button>
+
           </div>
+          <h1 className="text-center mt-1 ">Don't have an account?
+            <Link to="/Signup"><span className="font-bold ml-2">Sign up.</span></Link></h1>
         </div>
       </div>
     </>
   );
 };
 
-export default Login;
+export default LoginPage;
