@@ -35,6 +35,7 @@ const URL_Request = () => {
                     onChange={(e) => setUrl(e.target.value)}
                     className="mt-4 p-2 border border-gray-300 rounded-md w-80"
                     placeholder="Enter URL"
+                    required
                   />
                 </div>
                 <div className="my-4">
@@ -45,6 +46,7 @@ const URL_Request = () => {
                     onChange={(e) => setCredentials(e.target.value)}
                     className="mt-4 p-2 border border-gray-300 rounded-md w-80"
                     placeholder="Enter Credentials"
+                    required
                   />
                 </div>
                 <button className="bg-gray-700 hover:bg-green-600 text-white font-bold py-2 px-4 shadow-lg rounded mt-6" type="submit">Request</button>
